@@ -34,9 +34,7 @@ public class ExporterCP implements DocExporter {
 		BufferedWriter bw = new BufferedWriter(fw);
 
 		for (OriLine line : doc.getCreasePattern()) {
-			if (line.getType() == OriLine.Type.NONE) {
-				continue;
-			}
+			
 			bw.write(line.getType().toInt() + " " + line.p0.x + " " + line.p0.y + " " + line.p1.x
 					+ " " + line.p1.y + "\n");
 		}

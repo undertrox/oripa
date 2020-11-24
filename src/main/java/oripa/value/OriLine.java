@@ -25,11 +25,11 @@ import oripa.geom.Segment;
 
 public class OriLine implements Comparable<OriLine> {
 
-	private static final int TYPE_NONE = 0;
+	private static final int TYPE_NONE = 4;
 	private static final int TYPE_CUT = 1;
 	private static final int TYPE_RIDGE = 2;
 	private static final int TYPE_VALLEY = 3;
-	private static final int TYPE_CUT_MODEL = 4;
+	private static final int TYPE_CUT_MODEL = 5;
 
 	public enum Type {
 

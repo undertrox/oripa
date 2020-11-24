@@ -18,7 +18,7 @@ import oripa.value.OriLine;
 
 public class ExporterSVGFactory {
 
-	static final int size = 1000;
+	static final int size = 300;
 	final static String head = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" standalone=\"no\"?>\n"
 			+ "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n"
 			+ "\"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n"
@@ -37,11 +37,11 @@ public class ExporterSVGFactory {
 			+ " <stop offset=\"95%\" stop-color=\"#DDDDDD\" />\n"
 			+ " </linearGradient>\n";
 	final static String lineStart = " <line stroke=\"blue\" stroke-width=\"2\" ";
-	final static String polygonStart = "<path style=\"fill:url(#Gradient1);"
-			+ "stroke:#0000ff;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;"
+	final static String polygonStart = "<path style=\"fill:#b2b2b2;"
+			+ "stroke:#0000ff;stroke-width:0.5pt;stroke-linecap:butt;stroke-linejoin:miter;"
 			+ "stroke-opacity:1;fill-opacity:1.0\" d=\"M ";
-	final static String polygonStart2 = "<path style=\"fill:url(#Gradient2);"
-			+ "stroke:#0000ff;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;"
+	final static String polygonStart2 = "<path style=\"fill:white;"
+			+ "stroke:#0000ff;stroke-width:0.5pt;stroke-linecap:butt;stroke-linejoin:miter;"
 			+ "stroke-opacity:1;fill-opacity:1.0\" d=\"M ";
 
 	private static class CreasePatternExporter implements DocExporter {
@@ -53,7 +53,7 @@ public class ExporterSVGFactory {
 			double paperSize = creasePattern.getPaperSize();
 
 			double scale = size / paperSize;
-			double center = size / 2;
+			double center = size / 2.0;
 			FileWriter fw = new FileWriter(filepath);
 			try (BufferedWriter bw = new BufferedWriter(fw)) {
 				bw.write(head);
@@ -104,6 +104,7 @@ public class ExporterSVGFactory {
 		@Override
 		public boolean export(final Doc doc, final String filepath)
 				throws IOException, IllegalArgumentException {
+
 			OrigamiModel origamiModel = doc.getOrigamiModel();
 			FoldedModelInfo foldedModelInfo = doc.getFoldedModelInfo();
 			double paperSize = origamiModel.getPaperSize();
@@ -213,7 +214,7 @@ public class ExporterSVGFactory {
 						bw.write("\" y1=\"" + y1);
 						bw.write("\" x2=\"" + x2);
 						bw.write("\" y2=\"" + y2);
-						bw.write("\" style=\"stroke:black;stroke-width:2px;\"/>\n");
+						bw.write("\" style=\"stroke:black;stroke-width:0.25pt;\"/>\n");
 					}
 					if (!face.precreases.isEmpty()) {
 						bw.write("</g>");

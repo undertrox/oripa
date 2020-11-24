@@ -16,8 +16,10 @@ public class ImageResourceLoader {
 		ClassLoader classLoader = c.getClassLoader();
 		URL url=classLoader.getResource(name);
 		
-		System.out.println(url.toString());
-		
+		//System.out.println(url.toString());
+		if (url == null) {
+			System.out.println(name);
+		}
 		ImageIcon icon=new ImageIcon(url);
 		
 		return icon;
